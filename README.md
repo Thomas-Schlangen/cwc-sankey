@@ -4,6 +4,14 @@
 
 ---
 
+## Vorschau
+
+![Beispiel-Rendering des Sankey-Diagramms](docs/screenshot-example.png)
+
+*Beispieldaten, gerendert per Headless-Chromium mit WebCC-Stub (siehe [CONTRIBUTING.md](CONTRIBUTING.md)).*
+
+---
+
 ## Features
 
 - **Nodes & Links per Property** — Datenstruktur und Farben frei aus TIA Portal oder WinCC-Skript setzbar
