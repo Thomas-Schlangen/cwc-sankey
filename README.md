@@ -106,7 +106,9 @@ Alle Properties sind im TIA Portal Inspektorfenster unter **Eigenschaften → Ve
 
 Links, deren `Source`/`Target` keinem bekannten Knotennamen entspricht, werden beim Rendern ignoriert.
 
-> **Wichtig:** `Nodes` und `Links` sind bewusst als `string`-Property (nicht als natives Array-of-Object) deklariert. Direktes Zuweisen eines JS-Arrays per Bildskript (`Screen.Items(...).Properties.Nodes = nodes;`) führt in WinCC Unified zu einem generischen COM-Fehler (`PROPERTY_SET Invoke failed`, `0x80000005`). Die Daten müssen daher per `JSON.stringify(...)` übertragen werden (siehe Beispiele unten).
+> **Wichtig 1 — Zugriffspfad:** Properties **müssen** per Skript immer über `.Properties.X` geschrieben werden — `Screen.Items("Sankey_1").Properties.Title = "..."`, **nicht** `Screen.Items("Sankey_1").Title = "..."`. Letzteres wirft in WinCC Unified einen Fehler, und zwar bei **jeder** Property, nicht nur bei `Nodes`/`Links` — auch beim einfachen `string`-Property `Title` (verifiziert in echter Runtime).
+>
+> **Wichtig 2 — keine Arrays direkt zuweisen:** `Nodes` und `Links` sind bewusst als `string`-Property (nicht als natives Array-of-Object) deklariert. Direktes Zuweisen eines JS-Arrays (`Screen.Items(...).Properties.Nodes = nodes;`) führt zu einem generischen COM-Fehler (`PROPERTY_SET Invoke failed`, `0x80000005`) — unabhängig vom Zugriffspfad. Die Daten müssen daher per `JSON.stringify(...)` übertragen werden (siehe Beispiele unten).
 
 ---
 
