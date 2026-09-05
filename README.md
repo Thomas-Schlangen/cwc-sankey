@@ -276,7 +276,7 @@ Siehe [CONTRIBUTING.md](CONTRIBUTING.md) — Beiträge unterliegen zusätzlich z
 | Bibliothek | Lizenz | Quelle |
 |---|---|---|
 | D3.js | ISC | https://d3js.org |
-| d3-sankey | ISC | https://github.com/d3/d3-sankey |
+| d3-sankey | BSD-3-Clause | https://github.com/d3/d3-sankey |
 | WebCC (webcc.min.js) | Siemens, Bestandteil von WinCC Unified | https://support.industry.siemens.com/cs/ww/de/view/109779176 |
 
 ---
