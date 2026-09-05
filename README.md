@@ -2,6 +2,8 @@
 
 **Sankey-Diagramm für WinCC Unified** — Custom Web Control zur Darstellung von Fluss-/Mengendiagrammen (Sankey) auf Basis von D3.js, vollständig über JSON-Properties konfigurierbar.
 
+**Fertiges Control zum Download:** [Neueste Release-Version](https://github.com/Thomas-Schlangen/cwc-sankey/releases/latest)
+
 ---
 
 ## Features
@@ -74,6 +76,11 @@ Mit der Nutzung dieser Software erklärst du dich damit einverstanden, dass du s
 ---
 
 ## Installation in TIA Portal
+
+> ⚠️ **Beim Download über die [Release-Seite](https://github.com/Thomas-Schlangen/cwc-sankey/releases/latest): Datei nach dem Download umbenennen!**
+> GitHub erlaubt keine geschweiften Klammern in Dateinamen. Die heruntergeladene Datei heißt daher `ED1175BD-33EA-44D7-B9C8-F6DDC84614C3.zip` — **WinCC Unified erfordert jedoch zwingend die geschweiften Klammern im Dateinamen.**
+> Bitte die Datei nach dem Download umbenennen in: **`{ED1175BD-33EA-44D7-B9C8-F6DDC84614C3}.zip`**
+> (Beim manuellen Packen wie in Schritt 1 unten tritt das Problem nicht auf, da der Dateiname dort frei gewählt wird.)
 
 1. Projektordner als ZIP packen — Dateiname = GUID aus `manifest.json`, Uppercase in `{}`:
    ```
