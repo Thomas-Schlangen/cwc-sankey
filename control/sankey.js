@@ -6,8 +6,8 @@ const controlInit = {
     events: ['NodeClicked'],
     properties: {
         Title: "",
-        Nodes: [],
-        Links: []
+        Nodes: "[]",
+        Links: "[]"
     }
 };
 w.controlInit = controlInit;
@@ -104,6 +104,17 @@ function render() {
         .text(function(d) { return d.name; });
 }
 
+function parseJsonArray(value) {
+    if (!value) return [];
+    try {
+        var parsed = JSON.parse(value);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+        console.log("[CWC] Fehler beim Parsen von JSON: " + error);
+        return [];
+    }
+}
+
 function setPropertySankey(data) {
     switch (data.key) {
         case "Title":
@@ -111,11 +122,11 @@ function setPropertySankey(data) {
             render();
             break;
         case "Nodes":
-            state.nodes = data.value || [];
+            state.nodes = parseJsonArray(data.value);
             render();
             break;
         case "Links":
-            state.links = data.value || [];
+            state.links = parseJsonArray(data.value);
             render();
             break;
     }

@@ -101,10 +101,12 @@ Alle Properties sind im TIA Portal Inspektorfenster unter **Eigenschaften → Ve
 | Property | Typ | Beschreibung |
 |---|---|---|
 | `Title` | string | Optionale Überschrift über dem Diagramm |
-| `Nodes` | Array&lt;Node&gt; | Liste der Knoten: `{ Name: string, RGB: "r, g, b" }` |
-| `Links` | Array&lt;Link&gt; | Liste der Flüsse: `{ Source: string, Target: string, Value: number, RGB: "r, g, b" }` — `Source`/`Target` referenzieren `Node.Name` |
+| `Nodes` | string (JSON) | JSON-codiertes Array der Knoten: `{ Name: string, RGB: "r, g, b" }` |
+| `Links` | string (JSON) | JSON-codiertes Array der Flüsse: `{ Source: string, Target: string, Value: number, RGB: "r, g, b" }` — `Source`/`Target` referenzieren `Node.Name` |
 
 Links, deren `Source`/`Target` keinem bekannten Knotennamen entspricht, werden beim Rendern ignoriert.
+
+> **Wichtig:** `Nodes` und `Links` sind bewusst als `string`-Property (nicht als natives Array-of-Object) deklariert. Direktes Zuweisen eines JS-Arrays per Bildskript (`Screen.Items(...).Properties.Nodes = nodes;`) führt in WinCC Unified zu einem generischen COM-Fehler (`PROPERTY_SET Invoke failed`, `0x80000005`). Die Daten müssen daher per `JSON.stringify(...)` übertragen werden (siehe Beispiele unten).
 
 ---
 
@@ -144,8 +146,8 @@ export function Sankey_1_LoadData(item) {
         { Source: "Prozess",    Target: "Ausschuss", Value: 15, RGB: "180, 180, 180" }
     ];
 
-    Screen.Items("Sankey_1").Nodes = nodes;
-    Screen.Items("Sankey_1").Links = links;
+    Screen.Items("Sankey_1").Properties.Nodes = JSON.stringify(nodes);
+    Screen.Items("Sankey_1").Properties.Links = JSON.stringify(links);
 }
 
 // Reaktion auf Knotenklick:
@@ -227,9 +229,9 @@ export function Sankey_2_LoadData(item) {
         { Source: "Stromverteilung", Target: "Verteilverluste",    Value: 20,  RGB: "200, 200, 200" }
     ];
 
-    Screen.Items("Sankey_2").Title = "Energiefluss Werk 3 — Jahresbilanz [MWh]";
-    Screen.Items("Sankey_2").Nodes = nodes;
-    Screen.Items("Sankey_2").Links = links;
+    Screen.Items("Sankey_2").Properties.Title = "Energiefluss Werk 3 — Jahresbilanz [MWh]";
+    Screen.Items("Sankey_2").Properties.Nodes = JSON.stringify(nodes);
+    Screen.Items("Sankey_2").Properties.Links = JSON.stringify(links);
 }
 ```
 

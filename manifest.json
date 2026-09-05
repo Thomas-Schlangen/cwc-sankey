@@ -3,7 +3,7 @@
     "control": {
         "identity": {
             "name": "Sankey",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "displayname": "Sankey Diagram",
             "icon": "./assets/sankey_logo.png",
             "type": "guid://ed1175bd-33ea-44d7-b9c8-f6ddc84614c3",
@@ -30,58 +30,12 @@
                         "default": ""
                     },
                     "Nodes": {
-                        "$ref": "#/control/types/Nodes"
+                        "type": "string",
+                        "default": "[]"
                     },
                     "Links": {
-                        "$ref": "#/control/types/Links"
-                    }
-                }
-            }
-        },
-        "types": {
-            "Nodes": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/control/types/Node"
-                }
-            },
-            "Node": {
-                "type": "object",
-                "properties": {
-                    "Name": {
                         "type": "string",
-                        "default": "Node"
-                    },
-                    "RGB": {
-                        "type": "string",
-                        "default": "128, 128, 128"
-                    }
-                }
-            },
-            "Links": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/control/types/Link"
-                }
-            },
-            "Link": {
-                "type": "object",
-                "properties": {
-                    "Source": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "Target": {
-                        "type": "string",
-                        "default": ""
-                    },
-                    "Value": {
-                        "type": "number",
-                        "default": 1
-                    },
-                    "RGB": {
-                        "type": "string",
-                        "default": "128, 128, 128"
+                        "default": "[]"
                     }
                 }
             }

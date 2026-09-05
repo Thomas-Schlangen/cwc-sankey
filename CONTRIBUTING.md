@@ -36,8 +36,8 @@ weiterhin frei anderweitig verwenden darfst.
    läuft ohne echte WinCC-Runtime in den Timeout-/Fallback-Modus) und über
    die Browser-Konsole testweise Properties setzen, z. B.:
    ```js
-   setPropertySankey({ key: 'Nodes', value: [{Name:'A',RGB:'31,119,180'},{Name:'B',RGB:'255,127,14'}] });
-   setPropertySankey({ key: 'Links', value: [{Source:'A',Target:'B',Value:10,RGB:'128,128,128'}] });
+   setPropertySankey({ key: 'Nodes', value: JSON.stringify([{Name:'A',RGB:'31,119,180'},{Name:'B',RGB:'255,127,14'}]) });
+   setPropertySankey({ key: 'Links', value: JSON.stringify([{Source:'A',Target:'B',Value:10,RGB:'128,128,128'}]) });
    ```
    und prüfen, dass das SVG korrekt rendert.
 4. Pull Request öffnen und kurz beschreiben, was und warum geändert
